@@ -19,7 +19,7 @@ struct Node {
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
    int n = G.numVertices;
    vector<int> distances(n, INF);
-   previous.resize(n, -1);
+   previous.assign(n, -1);
    vector<bool> visited(n, false);
    
    priority_queue<Node, vector<Node>, greater<Node>> pq;
@@ -47,15 +47,17 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
    
    return distances;
 }
+
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous, int destination) {
     vector<int> path;
     if (distances[destination] == INF) {
-        return path;
+        return path; 
     }
-    for (int current = destination; current != -1 && distances[current] != 0; current = previous[current]) {
+
+    for (int current = destination; current != -1; current = previous[current]) {
         path.push_back(current);
     }
-    path.push_back(0);
+
     reverse(path.begin(), path.end());
     return path;
 }
