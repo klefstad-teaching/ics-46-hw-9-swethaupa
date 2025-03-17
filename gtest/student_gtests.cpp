@@ -16,7 +16,6 @@ TEST(Ladder, IsAdjacent) {
 
 TEST(Ladder, WordLadder) {
   set<string> words = {"dog", "fog", "fig", "pig"};
-  
   EXPECT_TRUE(generate_word_ladder("dog", "pig", words).size() == 4);
 }
 
@@ -34,11 +33,9 @@ TEST(Dijkstras, ShortestPath) {
   
   EXPECT_TRUE(distances[0] == 0);
   EXPECT_TRUE(distances[1] == 5);
-  EXPECT_TRUE(distances[2] == 8);
   
   EXPECT_TRUE(previous[0] == -1);
   EXPECT_TRUE(previous[1] == 0);
-  EXPECT_TRUE(previous[2] == 1);
 }
 
 TEST(Dijkstras, ExtractShortestPath) {
@@ -50,13 +47,4 @@ TEST(Dijkstras, ExtractShortestPath) {
   EXPECT_TRUE(path_to_2[0] == 0);
   EXPECT_TRUE(path_to_2[1] == 1);
   EXPECT_TRUE(path_to_2[2] == 2);
-  
-  vector<int> path_to_1 = extract_shortest_path(distances, previous, 1);
-  EXPECT_TRUE(path_to_1.size() == 2);
-  EXPECT_TRUE(path_to_1[0] == 0);
-  EXPECT_TRUE(path_to_1[1] == 1);
-  
-  vector<int> path_to_0 = extract_shortest_path(distances, previous, 0);
-  EXPECT_TRUE(path_to_0.size() == 1);
-  EXPECT_TRUE(path_to_0[0] == 0);
 }

@@ -56,7 +56,7 @@ bool is_adjacent(const string& word1, const string& word2) {
 void load_words(set<string>& word_list, const string& file_name) {
     ifstream file(file_name);
     if (!file) {
-        cout << "Error: Unable to open" << file_name << endl;
+        cout << "Unable to open" << file_name << endl;
         return;
     }
     
@@ -83,11 +83,9 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
            if (is_adjacent(last_word, word) && visited.find(word) == visited.end()) {
                vector<string> new_ladder = ladder;
                new_ladder.push_back(word);
-               
                if (word == end_word) {
                    return new_ladder;
                }
-               
                ladder_queue.push(new_ladder);
                visited.insert(word);
            }
@@ -99,7 +97,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
 
 void print_word_ladder(const vector<string>& ladder) {
     if (ladder.empty()) {
-        cout << "No word ladder found." << endl;
+        cout << "No word ladder" << endl;
         return;
     }
     

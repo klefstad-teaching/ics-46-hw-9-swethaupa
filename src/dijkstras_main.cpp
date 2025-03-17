@@ -12,7 +12,7 @@ int main() {
     try {
         file_to_graph(filename, G);
     } catch (const exception& e) {
-        cerr << "Error: " << e.what() << endl;
+        cerr << "Error"<< endl;
         return 1;
     }
 
